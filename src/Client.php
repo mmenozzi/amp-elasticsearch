@@ -228,7 +228,7 @@ class Client
         return call(function () use ($request) {
             /** @var Response $response */
             $response = yield $this->httpClient->request($request);
-            $body = yield $response->getBody()->read();
+            $body = yield $response->getBody()->buffer();
             $statusClass = (int) ($response->getStatus() / 100);
             if ($statusClass !== 2) {
                 throw new Error($body, $response->getStatus());

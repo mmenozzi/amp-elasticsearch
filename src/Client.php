@@ -217,7 +217,9 @@ class Client
         $request = new Request($uri, $method);
 				$request->setHeader('Content-Type', 'application/json');
 			  $request->setHeader('Accept', 'application/json');
-        if ($body) {
+				$request->setBodySizeLimit(15000000);
+
+			if ($body) {
             $request->setBody($body);
         }
         return $request;
